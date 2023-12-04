@@ -1,13 +1,17 @@
 package com.ndiman.classmath.ui.home
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.ndiman.classmath.data.Repository
+import com.ndiman.classmath.data.pref.UserModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: Repository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    fun getSession(): LiveData<UserModel> {
+        return repository.getSession().asLiveData()
     }
-    val text: LiveData<String> = _text
+
+    fun getDetailUser() = repository.getDetailUser()
 }

@@ -15,6 +15,18 @@
         android:theme="@style/Theme.ClassMath"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.soal.ListKelasSoalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.materi.ListKelasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.favoritmateri.FavoritMateriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.detailakun.DetailAkunActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.register.RegisterActivity"
             android:exported="false" />
         <activity
@@ -31,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
 
         <meta-data

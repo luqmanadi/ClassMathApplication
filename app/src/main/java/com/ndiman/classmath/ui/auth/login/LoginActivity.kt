@@ -6,13 +6,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ndiman.classmath.R
+import com.ndiman.classmath.data.Result
+import com.ndiman.classmath.data.pref.UserModel
 import com.ndiman.classmath.databinding.ActivityLoginBinding
+import com.ndiman.classmath.ui.MainActivity
+import com.ndiman.classmath.ui.ViewModelFactory
 import com.ndiman.classmath.ui.auth.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<LoginViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     private var binding : ActivityLoginBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +66,67 @@ class LoginActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(s: Editable) {}
         })
+
+        binding?.loginButton?.setOnClickListener {
+            inputData()
+        }
+    }
+
+    private fun inputData(){
+        val username = binding?.usernameEditText?.text.toString()
+        val password = binding?.passwordEditText?.text.toString()
+
+        if (username.isEmpty() || password.isEmpty()){
+            showErrorDialog()
+        } else {
+            viewModel.loginUser(username, password).observe(this){result ->
+                if (result != null){
+                    when(result){
+                        is Result.Loading -> {
+                            showLoading(true)
+                        }
+                        is Result.Success -> {
+                            viewModel.saveSession(
+                                UserModel(
+                                    token = result.data.data.token,
+                                    isLogin = true)
+                            )
+                            Log.d("Success", "Cek Token : ${result.data.data.token}")
+                            showLoading(false)
+                            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                            MaterialAlertDialogBuilder(this)
+                                .setTitle(resources.getString(R.string.success_login))
+                                .setMessage(resources.getString(R.string.dialog_success_login))
+                                .setPositiveButton(resources.getString(R.string.ok)){_, _ ->
+                                    val intent = Intent(this, MainActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                .create()
+                                .show()
+                        }
+                        is Result.Error -> {
+                            showLoading(false)
+                            showErrorDialog()
+                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                        }
+
+                        else -> {}
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showErrorDialog(){
+        MaterialAlertDialogBuilder(this)
+            .setTitle(resources.getString(R.string.failed_login))
+            .setMessage(resources.getString(R.string.dialog_failed_login))
+            .setPositiveButton(resources.getString(R.string.ok)){_, _ ->
+            }
+            .create()
+            .show()
     }
 
     private fun setAnimation(){

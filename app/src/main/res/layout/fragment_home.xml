@@ -1,23 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/open_sans"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/rectangle_background_1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_home_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/app_name" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgDetailUser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/profile_foto"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_background_1"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_background_1"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_background_1" />
+
+        <TextView
+            android:id="@+id/tvHalo"
+            style="@style/TextAppearance.MdcTypographyStyles.Subtitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/halo"
+            app:layout_constraintStart_toEndOf="@+id/imgDetailUser"
+            app:layout_constraintTop_toTopOf="@+id/imgDetailUser" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/name_profile"
+            app:layout_constraintStart_toEndOf="@+id/imgDetailUser"
+            app:layout_constraintTop_toBottomOf="@+id/tvHalo" />
+
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/searchBar"
+            style=""
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/search_hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_background_1"
+            app:navigationIconTint="?attr/colorSurfaceContainer">
+        </com.google.android.material.search.SearchBar>
+
+        <com.google.android.material.search.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/search_hint"
+            app:layout_anchor="@id/searchBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </com.google.android.material.search.SearchView>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager2"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/searchBar"
+            app:layout_constraintStart_toStartOf="@+id/searchBar"
+            app:layout_constraintTop_toBottomOf="@+id/searchBar" />
+
+        <LinearLayout
+            android:id="@+id/slideDotLL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/viewpager2"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/viewpager2"
+            app:layout_constraintStart_toStartOf="@id/viewpager2"
+            app:layout_constraintTop_toBottomOf="@+id/viewpager2" />
+
+        <View
+            android:id="@+id/rectangle_background_2"
+            android:layout_width="360dp"
+            android:layout_height="133dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_menu_materi_soal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slideDotLL" />
+
+        <ImageView
+            android:id="@+id/btn_materi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="77dp"
+            android:src="@drawable/baseline_menu_book_24"
+            app:layout_constraintEnd_toStartOf="@+id/btn_soal"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_background_2"
+            app:layout_constraintTop_toTopOf="@+id/rectangle_background_2"
+            android:contentDescription="@string/btn_materi" />
+
+        <ImageView
+            android:id="@+id/btn_soal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
+            app:layout_constraintStart_toEndOf="@+id/btn_materi"
+            android:src="@drawable/baseline_calculate_24"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_background_2"
+            app:layout_constraintTop_toTopOf="@+id/btn_materi"
+            android:contentDescription="@string/btn_soal"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/rectangle_background_2"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_background_2"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_background_2"
+            app:layout_constraintTop_toBottomOf="@+id/slideDotLL"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvBtnMateri"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_materi"
+            app:layout_constraintEnd_toEndOf="@+id/btn_materi"
+            app:layout_constraintStart_toStartOf="@+id/btn_materi"
+            app:layout_constraintTop_toBottomOf="@+id/btn_materi" />
+
+        <TextView
+            android:id="@+id/tvBtnSoal"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_soal"
+            app:layout_constraintEnd_toEndOf="@+id/btn_soal"
+            app:layout_constraintStart_toStartOf="@+id/btn_soal"
+            app:layout_constraintTop_toBottomOf="@+id/btn_soal" />
+
+        <TextView
+            android:id="@+id/tv_leaderboard"
+            style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/leaderboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rectangle_background_2" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_home"
+            style="@style/Widget.Material3.MaterialDivider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:dividerThickness="1dp"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_background_2"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_background_2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_leaderboard" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_leaderbord"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/rectangle_background_2"
+            app:layout_constraintStart_toStartOf="@+id/rectangle_background_2"
+            app:layout_constraintTop_toBottomOf="@+id/divider_home"
+            tools:listitem="@layout/item_leaderbord" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

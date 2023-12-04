@@ -19,6 +19,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", "\"https://classmath.ais-aif.my.id/api/\"")
+        buildConfigField("String", "BASE_URI_PHOTO", "\"https://classmath.ais-aif.my.id/\"")
     }
 
     buildTypes {

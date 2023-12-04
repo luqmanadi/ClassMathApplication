@@ -24,4 +24,6 @@ class ProfileViewModel(private val repository: Repository) : ViewModel() {
             repository.saveThemeSetting(isDarkModeActive)
         }
     }
+
+    fun getDetailUser() = repository.getDetailUser()
 }

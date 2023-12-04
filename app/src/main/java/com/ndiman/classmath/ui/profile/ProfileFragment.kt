@@ -11,9 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ndiman.classmath.R
+import com.ndiman.classmath.data.Result
 import com.ndiman.classmath.databinding.FragmentProfileBinding
 import com.ndiman.classmath.ui.ViewModelFactory
 import com.ndiman.classmath.ui.onboarding.OnBoardingActivity
+import com.ndiman.classmath.ui.profile.detailakun.DetailAkunActivity
+import com.ndiman.classmath.ui.profile.favoritmateri.FavoritMateriActivity
 
 class ProfileFragment : Fragment() {
 
@@ -39,12 +42,34 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getDetailUser()
         setUpAction()
         getTheme()
     }
 
 
+    private fun getDetailUser(){
+        viewModel.getDetailUser().observe(requireActivity()){result ->
+            if (result != null){
+                when(result){
+                    is Result.Loading -> {
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        showLoading(false)
+                        binding?.tvNameUser?.text = result.data.data?.name
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
     private fun setUpAction(){
+
         binding?.btnLogout?.setOnClickListener {
             binding?.btnLogout?.setOnClickListener {
                 MaterialAlertDialogBuilder(requireActivity())
@@ -69,6 +94,14 @@ class ProfileFragment : Fragment() {
         binding?.switchTheme?.setOnCheckedChangeListener { _, isChecked: Boolean ->
             viewModel.saveThemeSetting(isChecked)
         }
+
+        binding?.btnDetailAkun?.setOnClickListener{
+            startActivity(Intent(requireActivity(), DetailAkunActivity::class.java))
+        }
+
+        binding?.btnFavoritMateri?.setOnClickListener{
+            startActivity(Intent(requireActivity(), FavoritMateriActivity::class.java))
+        }
     }
 
     private fun getTheme(){
@@ -83,7 +116,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean){binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE}
+    private fun showLoading(state: Boolean){binding?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE}
 
     override fun onDestroyView() {
         super.onDestroyView()

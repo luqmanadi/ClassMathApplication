@@ -110,7 +110,6 @@ class RegisterActivity : AppCompatActivity() {
                             showErrorDataIsAlreadyTaken()
                             showLoading(false)
                         }
-                        else -> {}
                     }
                 }
             }

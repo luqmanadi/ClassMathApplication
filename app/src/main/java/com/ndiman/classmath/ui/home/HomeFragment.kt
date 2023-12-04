@@ -73,6 +73,7 @@ class HomeFragment : Fragment() {
 
         setUpSliderImage()
         getDetailUser()
+        setUpActionMenu()
     }
 
     private fun setUpActionMenu(){

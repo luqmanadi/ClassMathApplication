@@ -31,7 +31,7 @@
     <string name="username_is_already_taken">Username sudah digunakan, harap masukkan username lainnya.</string>
     <string name="success_register">Pendaftaran Berhasil!</string>
     <string name="failed_register">Pendaftaran Gagal!</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="dialog_success_register">Akun dengan username %1$s berhasil didaftarkan, silahkan lanjut Masuk</string>
     <string name="dialog_success_login">Anda berhasil login, Sudah tidak sabar berbagi cerita yaa!</string>
     <string name="dialog_failed_register">Pendaftaran gagal. Silahkan periksa kembali input Anda dan coba lagi.</string>
@@ -68,4 +68,10 @@
     <string name="image_forward">image forward</string>
     <string name="list_class">Daftar Kelas</string>
     <string name="list_materi">Materi Kelas</string>
+    <string name="list_favorit_materi">Favorit Materi</string>
+    <string name="simpan">Simpan</string>
+    <string name="success_update">Berhasil Update Data!</string>
+    <string name="failed_update">Gagal Update Data</string>
+    <string name="dialog_success_update">Data Akun Anda berhasil diupdate, semoga lebih aman</string>
+    <string name="dialog_failed_update">Silakan cek input data Anda kembali, jangan sampai kosong yaa</string>
 </resources>

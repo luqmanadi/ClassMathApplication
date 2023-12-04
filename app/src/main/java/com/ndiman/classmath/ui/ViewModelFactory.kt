@@ -9,8 +9,12 @@ import com.ndiman.classmath.ui.auth.login.LoginViewModel
 import com.ndiman.classmath.ui.auth.register.RegisterViewModel
 import com.ndiman.classmath.ui.history.HistoryViewModel
 import com.ndiman.classmath.ui.home.HomeViewModel
+import com.ndiman.classmath.ui.home.materi.viewmodel.ListKelasViewModel
+import com.ndiman.classmath.ui.home.soal.ListKelasSoalViewModel
 import com.ndiman.classmath.ui.onboarding.OnBoardingViewModel
 import com.ndiman.classmath.ui.profile.ProfileViewModel
+import com.ndiman.classmath.ui.profile.detailakun.DetailAkunViewModel
+import com.ndiman.classmath.ui.profile.favoritmateri.FavoriteMateriViewModel
 
 class ViewModelFactory (private val repository: Repository): ViewModelProvider.NewInstanceFactory()  {
 
@@ -37,6 +41,18 @@ class ViewModelFactory (private val repository: Repository): ViewModelProvider.N
             }
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
                 HistoryViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ListKelasViewModel::class.java) -> {
+                ListKelasViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ListKelasSoalViewModel::class.java) -> {
+                ListKelasSoalViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailAkunViewModel::class.java) -> {
+                DetailAkunViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(FavoriteMateriViewModel::class.java) -> {
+                FavoriteMateriViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

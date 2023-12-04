@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -91,7 +90,6 @@ class LoginActivity : AppCompatActivity() {
                                     token = result.data.data.token,
                                     isLogin = true)
                             )
-                            Log.d("Success", "Cek Token : ${result.data.data.token}")
                             showLoading(false)
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                             MaterialAlertDialogBuilder(this)
@@ -111,8 +109,6 @@ class LoginActivity : AppCompatActivity() {
                             showErrorDialog()
                             Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                         }
-
-                        else -> {}
                     }
                 }
             }

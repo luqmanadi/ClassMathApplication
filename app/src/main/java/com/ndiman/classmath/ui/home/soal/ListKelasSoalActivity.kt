@@ -11,6 +11,8 @@ import com.ndiman.classmath.data.Result
 import com.ndiman.classmath.data.remote.response.DataItemGrade
 import com.ndiman.classmath.databinding.ActivityListKelasSoalBinding
 import com.ndiman.classmath.ui.ViewModelFactory
+import com.ndiman.classmath.ui.home.soal.adapter.ListGradeSoalAdapter
+import com.ndiman.classmath.ui.home.soal.viewmodel.ListKelasSoalViewModel
 
 class ListKelasSoalActivity : AppCompatActivity() {
 

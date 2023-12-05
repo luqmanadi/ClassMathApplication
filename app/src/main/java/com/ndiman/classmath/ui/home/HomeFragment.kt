@@ -16,8 +16,10 @@ import com.ndiman.classmath.data.Result
 import com.ndiman.classmath.data.pref.ImageItem
 import com.ndiman.classmath.databinding.FragmentHomeBinding
 import com.ndiman.classmath.ui.ViewModelFactory
+import com.ndiman.classmath.ui.home.adapter.ImageSlideAdapter
 import com.ndiman.classmath.ui.home.materi.ListKelasActivity
 import com.ndiman.classmath.ui.home.soal.ListKelasSoalActivity
+import com.ndiman.classmath.ui.home.viewmodel.HomeViewModel
 import com.ndiman.classmath.ui.onboarding.OnBoardingActivity
 import java.util.UUID
 

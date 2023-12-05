@@ -3,6 +3,7 @@ package com.ndiman.classmath.data
 import android.util.Log
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.ndiman.classmath.data.pref.UserModel
 import com.ndiman.classmath.data.pref.UserPreference
 import com.ndiman.classmath.data.remote.response.ErrorResponse
@@ -60,10 +61,16 @@ class Repository private constructor(
         } catch (e: HttpException) {
             val jsonString = e.response()?.errorBody()?.string()
             Log.d(TAG, "StoryRepository: $jsonString")
-            val errorBody = Gson().fromJson(jsonString, ErrorResponse::class.java)
-            val errorMessage = errorBody.errors
-            emit(Result.Error(errorMessage))
-        } catch (e: Exception) {
+            try {
+                val errorBody = Gson().fromJson(jsonString, ErrorResponse::class.java)
+                val errorMessage = errorBody.errors
+                emit(Result.Error(errorMessage))
+            } catch (jsonException: JsonSyntaxException) {
+                Log.e(TAG, "JsonSyntaxException: ${jsonException.message}")
+                emit(Result.Error("Unexpected response format"))
+            }
+        }
+        catch (e: Exception) {
             emit(Result.Error("Lost Connection"))
         }
     }

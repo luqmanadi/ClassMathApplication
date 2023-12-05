@@ -8,9 +8,11 @@ import com.ndiman.classmath.data.di.Injection
 import com.ndiman.classmath.ui.auth.login.LoginViewModel
 import com.ndiman.classmath.ui.auth.register.RegisterViewModel
 import com.ndiman.classmath.ui.history.HistoryViewModel
-import com.ndiman.classmath.ui.home.HomeViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.ListKelasViewModel
-import com.ndiman.classmath.ui.home.soal.ListKelasSoalViewModel
+import com.ndiman.classmath.ui.home.materi.viewmodel.ListTutorialViewModel
+import com.ndiman.classmath.ui.home.materi.viewmodel.PdfViewerViewModel
+import com.ndiman.classmath.ui.home.soal.viewmodel.ListKelasSoalViewModel
+import com.ndiman.classmath.ui.home.viewmodel.HomeViewModel
 import com.ndiman.classmath.ui.onboarding.OnBoardingViewModel
 import com.ndiman.classmath.ui.profile.ProfileViewModel
 import com.ndiman.classmath.ui.profile.detailakun.DetailAkunViewModel
@@ -53,6 +55,12 @@ class ViewModelFactory (private val repository: Repository): ViewModelProvider.N
             }
             modelClass.isAssignableFrom(FavoriteMateriViewModel::class.java) -> {
                 FavoriteMateriViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ListTutorialViewModel::class.java) -> {
+                ListTutorialViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(PdfViewerViewModel::class.java) -> {
+                PdfViewerViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

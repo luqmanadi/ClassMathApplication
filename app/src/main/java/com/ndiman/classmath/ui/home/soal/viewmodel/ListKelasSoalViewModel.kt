@@ -1,4 +1,4 @@
-package com.ndiman.classmath.ui.home.soal
+package com.ndiman.classmath.ui.home.soal.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.ndiman.classmath.data.Repository

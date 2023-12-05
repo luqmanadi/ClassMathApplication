@@ -74,4 +74,5 @@
     <string name="failed_update">Gagal Update Data</string>
     <string name="dialog_success_update">Data Akun Anda berhasil diupdate, semoga lebih aman</string>
     <string name="dialog_failed_update">Silakan cek input data Anda kembali, jangan sampai kosong yaa</string>
+    <string name="materi_pdf">Materi PDF</string>
 </resources>

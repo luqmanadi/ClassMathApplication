@@ -1,4 +1,4 @@
-package com.ndiman.classmath.ui.home
+package com.ndiman.classmath.ui.home.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

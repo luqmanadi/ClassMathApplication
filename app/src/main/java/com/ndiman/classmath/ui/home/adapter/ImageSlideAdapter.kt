@@ -1,4 +1,4 @@
-package com.ndiman.classmath.ui.home
+package com.ndiman.classmath.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.ndiman.classmath.data.pref.ImageItem
 import com.ndiman.classmath.databinding.ItemImageSliderBinding
 
-class ImageSlideAdapter: ListAdapter<ImageItem,ImageSlideAdapter.ViewHolder>(DiffCallback()) {
+class ImageSlideAdapter: ListAdapter<ImageItem, ImageSlideAdapter.ViewHolder>(DiffCallback()) {
 
     class ViewHolder(private val binding: ItemImageSliderBinding): RecyclerView.ViewHolder(binding.root) {
         private fun ImageView.loadImage(image: String){

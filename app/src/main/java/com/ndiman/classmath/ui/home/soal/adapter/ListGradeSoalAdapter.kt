@@ -1,4 +1,4 @@
-package com.ndiman.classmath.ui.home.soal
+package com.ndiman.classmath.ui.home.soal.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,9 @@ import com.ndiman.classmath.BuildConfig
 import com.ndiman.classmath.data.remote.response.DataItemGrade
 import com.ndiman.classmath.databinding.ItemListRiwayatFavoritBinding
 
-class ListGradeSoalAdapter: ListAdapter<DataItemGrade, ListGradeSoalAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class ListGradeSoalAdapter: ListAdapter<DataItemGrade, ListGradeSoalAdapter.MyViewHolder>(
+    DIFF_CALLBACK
+) {
     class MyViewHolder(private val binding: ItemListRiwayatFavoritBinding): RecyclerView.ViewHolder(binding.root) {
         private fun ImageView.loadImage(photoUrl: String?) {
             Glide.with(this.context)

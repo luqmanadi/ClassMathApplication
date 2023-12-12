@@ -39,6 +39,7 @@ class ListTutorialAdapter: ListAdapter<FilePdf, ListTutorialAdapter.MyViewHolder
         val list = getItem(position)
         val setDataFile = FilePdf(
             list.idTutorial,
+            list.grade,
             list.title,
             list.tutorialImage,
             list.tutorialFile

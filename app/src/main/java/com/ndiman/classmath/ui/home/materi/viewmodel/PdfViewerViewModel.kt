@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ndiman.classmath.data.Repository
+import com.ndiman.classmath.data.local.entity.FavoritMateri
+import com.ndiman.classmath.data.local.entity.HistoriMateri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,6 +47,27 @@ class PdfViewerViewModel(private val repository: Repository): ViewModel() {
         } catch (e: Exception) {
             e.printStackTrace()
             null
+        }
+    }
+
+    fun insertFavMateri(favoritMateri: FavoritMateri){
+        viewModelScope.launch {
+            repository.setInsertFavoritMateri(favoritMateri)
+        }
+    }
+
+    fun deleteFavMateri(favoritMateri: FavoritMateri){
+        viewModelScope.launch{
+            repository.deleteFavoritMateri(favoritMateri)
+        }
+    }
+
+    fun getIsFavoriteMateri(idTutorial: String): LiveData<Boolean> = repository.getIsFavoritMateri(idTutorial)
+
+
+    fun insertHistoryMateri(historiMateri: HistoriMateri){
+        viewModelScope.launch {
+            repository.insertHistoryStudy(historiMateri)
         }
     }
 }

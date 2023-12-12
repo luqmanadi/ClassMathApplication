@@ -12,6 +12,10 @@ import com.ndiman.classmath.ui.home.materi.viewmodel.ListKelasViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.ListTutorialViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.PdfViewerViewModel
 import com.ndiman.classmath.ui.home.soal.viewmodel.ListKelasSoalViewModel
+import com.ndiman.classmath.ui.home.soal.viewmodel.ListSoalTutorialViewModel
+import com.ndiman.classmath.ui.home.soal.viewmodel.ListSoalViewModel
+import com.ndiman.classmath.ui.home.soal.viewmodel.ResultQuizViewModel
+import com.ndiman.classmath.ui.home.soal.viewmodel.SoalViewModel
 import com.ndiman.classmath.ui.home.viewmodel.HomeViewModel
 import com.ndiman.classmath.ui.onboarding.OnBoardingViewModel
 import com.ndiman.classmath.ui.profile.ProfileViewModel
@@ -58,6 +62,18 @@ class ViewModelFactory (private val repository: Repository): ViewModelProvider.N
             }
             modelClass.isAssignableFrom(ListTutorialViewModel::class.java) -> {
                 ListTutorialViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ListSoalTutorialViewModel::class.java) -> {
+                ListSoalTutorialViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ListSoalViewModel::class.java) -> {
+                ListSoalViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SoalViewModel::class.java) -> {
+                SoalViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ResultQuizViewModel::class.java) -> {
+                ResultQuizViewModel(repository) as T
             }
             modelClass.isAssignableFrom(PdfViewerViewModel::class.java) -> {
                 PdfViewerViewModel(repository) as T

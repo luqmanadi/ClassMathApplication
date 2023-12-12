@@ -1,5 +1,6 @@
 package com.ndiman.classmath.ui.home.soal.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.ndiman.classmath.BuildConfig
 import com.ndiman.classmath.data.remote.response.DataItemGrade
 import com.ndiman.classmath.databinding.ItemListRiwayatFavoritBinding
+import com.ndiman.classmath.ui.home.soal.ListSoalTutorialActivity
 
 class ListGradeSoalAdapter: ListAdapter<DataItemGrade, ListGradeSoalAdapter.MyViewHolder>(
     DIFF_CALLBACK
@@ -44,6 +46,9 @@ class ListGradeSoalAdapter: ListAdapter<DataItemGrade, ListGradeSoalAdapter.MyVi
 
         holder.itemView.setOnClickListener {
             Toast.makeText(holder.itemView.context, "Memilih Materi ${list.name}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(holder.itemView.context, ListSoalTutorialActivity::class.java)
+            intent.putExtra(ListSoalTutorialActivity.ID_GRADE_SOAL, list.id)
+            holder.itemView.context.startActivity(intent)
         }
     }
 

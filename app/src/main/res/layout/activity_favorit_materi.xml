@@ -38,13 +38,28 @@
         tools:visibility="visible"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list_class"
+        android:id="@+id/rv_list_favorit"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:listitem="@layout/item_list_riwayat_favorit"/>
+        tools:listitem="@layout/item_list_favorit_history"/>
+
+    <TextView
+        android:id="@+id/tv_list_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/TextAppearance.MdcTypographyStyles.Body1"
+        android:text="@string/empty_list"
+        android:textStyle="italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_list_favorit"
+        app:layout_constraintEnd_toEndOf="@+id/rv_list_favorit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

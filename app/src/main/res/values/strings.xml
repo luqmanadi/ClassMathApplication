@@ -64,6 +64,7 @@
     <string name="empty_list">Daftar Kosong</string>
     <string name="history">Riwayat Belajar</string>
     <string name="nama_materi">Nama Materi</string>
+    <string name="grade">Kelas</string>
     <string name="image_materi">image materi</string>
     <string name="image_forward">image forward</string>
     <string name="list_class">Daftar Kelas</string>
@@ -75,4 +76,28 @@
     <string name="dialog_success_update">Data Akun Anda berhasil diupdate, semoga lebih aman</string>
     <string name="dialog_failed_update">Silakan cek input data Anda kembali, jangan sampai kosong yaa</string>
     <string name="materi_pdf">Materi PDF</string>
+    <string name="list_soal_materi">Daftar Soal Materi</string>
+    <string name="no_soal">1/10</string>
+    <string name="btn_back">tombol halaman sebelumnya</string>
+    <string name="btn_forward">tombol halaman setelahnya</string>
+    <string name="image_soal">Image Soal</string>
+    <string name="jawaban1">AKU BISA</string>
+    <string name="jawaban2">AKU BISA MATEMATIKA</string>
+    <string name="jawaban3">AKU BISA MATEMATIKA HEBAT</string>
+    <string name="jawaban4">AKU BISA MATEMATIKA MANTAP</string>
+    <string name="tv_result">Hasil</string>
+    <string name="title_result_quiz">Nilai Quiz:</string>
+    <string name="result_quiz">0</string>
+    <string name="image_correct">image correct</string>
+    <string name="image_wrong">image wrong</string>
+    <string name="image_no_answer">image no answer</string>
+    <string name="tv_correct">Benar</string>
+    <string name="tv_wrong">Salah</string>
+    <string name="tv_no_answer">Belum\nDijawab</string>
+    <string name="result_correct">0</string>
+    <string name="result_wrong">0</string>
+    <string name="result_no_answer">0</string>
+    <string name="back">Kembali</string>
+    <string name="finish">Akhiri Quiz</string>
+    <string name="dialog_quiz">Apakah anda ingin mengakhiri latihan soal?</string>
 </resources>

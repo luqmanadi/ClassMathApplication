@@ -11,12 +11,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.ndiman.classmath.data.Result
 import com.ndiman.classmath.data.pref.ImageItem
+import com.ndiman.classmath.data.remote.response.DataItemLeaderboard
 import com.ndiman.classmath.databinding.FragmentHomeBinding
 import com.ndiman.classmath.ui.ViewModelFactory
 import com.ndiman.classmath.ui.home.adapter.ImageSlideAdapter
+import com.ndiman.classmath.ui.home.adapter.LeaderboardAdapter
 import com.ndiman.classmath.ui.home.materi.ListKelasActivity
 import com.ndiman.classmath.ui.home.soal.ListKelasSoalActivity
 import com.ndiman.classmath.ui.home.viewmodel.HomeViewModel
@@ -75,6 +79,7 @@ class HomeFragment : Fragment() {
 
         setUpSliderImage()
         getDetailUser()
+        getLeaderboard()
         setUpActionMenu()
     }
 
@@ -156,6 +161,40 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+
+    private fun getLeaderboard(){
+        viewModel.getLeaderboard().observe(requireActivity()){result ->
+            if (result != null){
+                when(result){
+                    is Result.Loading -> {
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        showLoading(false)
+                        val newData = result.data.data
+                        if (newData.isNotEmpty()){
+                            setListLeaderboard(newData)
+                        }
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        Toast.makeText(requireActivity(), result.error, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+    private fun setListLeaderboard(lisLeader: List<DataItemLeaderboard>){
+        val layoutmanager = LinearLayoutManager(requireContext())
+        binding.rvLeaderbord.layoutManager = layoutmanager
+        val itemDecoration = DividerItemDecoration(requireContext(), layoutmanager.orientation)
+        binding.rvLeaderbord.addItemDecoration(itemDecoration)
+        binding.rvLeaderbord.setHasFixedSize(true)
+        val adapter = LeaderboardAdapter()
+        binding.rvLeaderbord.adapter = adapter
+        adapter.submitList(lisLeader)
     }
 
     private fun showLoading(state: Boolean) { binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE }

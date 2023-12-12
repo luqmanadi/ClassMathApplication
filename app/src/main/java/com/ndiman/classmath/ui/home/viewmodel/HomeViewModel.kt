@@ -14,4 +14,6 @@ class HomeViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun getDetailUser() = repository.getDetailUser()
+
+    fun getLeaderboard() = repository.getLeaderboard()
 }

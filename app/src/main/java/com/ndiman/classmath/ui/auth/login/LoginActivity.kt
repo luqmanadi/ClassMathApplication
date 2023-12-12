@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                         is Result.Success -> {
                             viewModel.saveSession(
-                                UserModel(
+                                UserModel(username,
                                     token = result.data.data.token,
                                     isLogin = true)
                             )

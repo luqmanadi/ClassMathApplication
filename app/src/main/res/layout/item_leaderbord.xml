@@ -12,7 +12,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgUser"
-        tools:src="@tools:sample/avatars"
+        android:src="@drawable/profile_foto"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,6 +26,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
+        style="@style/TextAppearance.MdcTypographyStyles.Headline6"
         app:layout_constraintStart_toEndOf="@+id/imgUser"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/name_profile" />

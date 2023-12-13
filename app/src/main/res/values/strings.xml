@@ -33,7 +33,7 @@
     <string name="failed_register">Pendaftaran Gagal!</string>
     <string name="ok">OK</string>
     <string name="dialog_success_register">Akun dengan username %1$s berhasil didaftarkan, silahkan lanjut Masuk</string>
-    <string name="dialog_success_login">Anda berhasil login, Sudah tidak sabar berbagi cerita yaa!</string>
+    <string name="dialog_success_login">Anda berhasil login, Sudah tidak sabar belajar yaa!</string>
     <string name="dialog_failed_register">Pendaftaran gagal. Silahkan periksa kembali input Anda dan coba lagi.</string>
     <string name="dialog_failed_login">Masuk gagal. Silahkan periksa kembali input Anda dan coba lagi.</string>
     <string name="success_login">Berhasil Masuk!</string>

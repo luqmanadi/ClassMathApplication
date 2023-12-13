@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.ndiman.classmath.R
 import com.ndiman.classmath.data.remote.response.DataItemLeaderboard
 import com.ndiman.classmath.databinding.ItemLeaderbordBinding
 
@@ -17,9 +18,7 @@ class LeaderboardAdapter : ListAdapter<DataItemLeaderboard, LeaderboardAdapter.M
         fun bind(listLeaderboard: DataItemLeaderboard) {
             binding.apply {
                 tvUser.text = listLeaderboard.name
-                tvPoint.text = "${listLeaderboard.totalScore.toString()} points"
-
-
+                tvPoint.text = itemView.context.getString(R.string.point, listLeaderboard.totalScore)
             }
         }
     }

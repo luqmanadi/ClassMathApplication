@@ -40,6 +40,7 @@ class HistoryAdapter: ListAdapter<HistoriMateri, HistoryAdapter.MyViewHolder>(DI
         val list = getItem(position)
         val setData = FilePdf(
             list.idTutorial!!,
+            list.idGrade!!,
             list.grade!!,
             list.title!!,
             list.tutorialImage!!,

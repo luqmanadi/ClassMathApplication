@@ -14,6 +14,9 @@ data class FavoritMateri(
     @ColumnInfo("idTutorial")
     var idTutorial:String = "",
 
+    @ColumnInfo("idGrade")
+    var idGrade: String? = null,
+
     @ColumnInfo("grade")
     var grade: String? = null,
 

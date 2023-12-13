@@ -72,6 +72,7 @@ class ListTutorialActivity : AppCompatActivity() {
         for (i in list.indices){
             val story = FilePdf(
                 list[i].id.toString(),
+                list[i].grade?.id.toString(),
                 list[i].grade?.name.toString(),
                 list[i].title.toString(),
                 list[i].tutorialImage.toString(),

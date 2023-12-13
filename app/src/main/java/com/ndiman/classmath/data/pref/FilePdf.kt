@@ -6,8 +6,10 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class FilePdf(
     val idTutorial: String,
+    val idGrade: String,
     val grade: String,
     val title: String,
     val tutorialImage: String,
     val tutorialFile: String
 ): Parcelable
+

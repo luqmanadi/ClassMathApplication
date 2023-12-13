@@ -40,6 +40,7 @@ class FavoritMateriAdapter: ListAdapter<FavoritMateri, FavoritMateriAdapter.MyVi
         val list = getItem(position)
         val setData = FilePdf(
             list.idTutorial,
+            list.idGrade!!,
             list.grade!!,
             list.title!!,
             list.tutorialImage!!,

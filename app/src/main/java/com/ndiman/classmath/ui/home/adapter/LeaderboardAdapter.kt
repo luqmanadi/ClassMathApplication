@@ -10,7 +10,7 @@ import com.ndiman.classmath.data.remote.response.DataItemLeaderboard
 import com.ndiman.classmath.databinding.ItemLeaderbordBinding
 
 
-class LeaderboardAdapter(): ListAdapter<DataItemLeaderboard, LeaderboardAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class LeaderboardAdapter : ListAdapter<DataItemLeaderboard, LeaderboardAdapter.MyViewHolder>(DIFF_CALLBACK) {
     class MyViewHolder(private val binding: ItemLeaderbordBinding): RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")

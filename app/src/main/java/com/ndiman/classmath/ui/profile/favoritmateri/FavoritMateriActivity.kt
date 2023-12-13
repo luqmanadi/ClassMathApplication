@@ -1,5 +1,6 @@
 package com.ndiman.classmath.ui.profile.favoritmateri
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -34,19 +35,19 @@ class FavoritMateriActivity : AppCompatActivity() {
     }
 
     private fun getAllFavoritMateri(){
-        viewModel.getFavoritMateri().observe(this){
-            showLoading(true)
-            if (it.isNotEmpty()){
-                showLoading(false)
-                setListFavoritMateri(it)
-            } else{
-                showLoading(false)
+        viewModel.getFavoritMateri().observe(this){listFavorit ->
+            showLoading(false)
+            if (listFavorit.isNotEmpty()) {
+                showListNull(false)
+                setListFavoritMateri(listFavorit)
+            } else {
                 showListNull(true)
             }
         }
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setListFavoritMateri(listFavorit: List<FavoritMateri>){
         val layoutmanager = LinearLayoutManager(this)
         binding?.rvListFavorit?.layoutManager = layoutmanager
@@ -56,6 +57,11 @@ class FavoritMateriActivity : AppCompatActivity() {
         val adapter = FavoritMateriAdapter()
         binding?.rvListFavorit?.adapter = adapter
         adapter.submitList(listFavorit)
+
+        viewModel.getFavoritMateri().observe(this) { updatedList ->
+            adapter.submitList(updatedList)
+            adapter.notifyDataSetChanged()
+        }
     }
 
 

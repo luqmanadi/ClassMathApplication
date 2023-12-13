@@ -1,5 +1,6 @@
 package com.ndiman.classmath.ui.home.materi
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -17,9 +18,11 @@ import com.ndiman.classmath.R
 import com.ndiman.classmath.data.local.entity.FavoritMateri
 import com.ndiman.classmath.data.local.entity.HistoriMateri
 import com.ndiman.classmath.data.pref.FilePdf
+import com.ndiman.classmath.data.pref.TutorialListModel
 import com.ndiman.classmath.databinding.ActivityPdfViewerBinding
 import com.ndiman.classmath.ui.ViewModelFactory
 import com.ndiman.classmath.ui.home.materi.viewmodel.PdfViewerViewModel
+import com.ndiman.classmath.ui.home.soal.ListSoalActivity
 import java.io.InputStream
 
 class PdfViewerActivity : AppCompatActivity() {
@@ -37,6 +40,7 @@ class PdfViewerActivity : AppCompatActivity() {
     private val dataEntityHistory = HistoriMateri()
 
     private var binding: ActivityPdfViewerBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPdfViewerBinding.inflate(layoutInflater)
@@ -55,18 +59,28 @@ class PdfViewerActivity : AppCompatActivity() {
         if (tutorial != null){
             showLoading(true)
             dataEntity.idTutorial = tutorial.idTutorial
+            dataEntity.idGrade = tutorial.idGrade
             dataEntity.grade = tutorial.grade
             dataEntity.title = tutorial.title
             dataEntity.tutorialImage = tutorial.tutorialImage
             dataEntity.tutorialFile = tutorial.tutorialFile
 
             dataEntityHistory.idTutorial = tutorial.idTutorial
+            dataEntityHistory.idGrade = tutorial.idGrade
             dataEntityHistory.grade = tutorial.grade
             dataEntityHistory.title = tutorial.title
             dataEntityHistory.tutorialImage = tutorial.tutorialImage
             dataEntityHistory.tutorialFile = tutorial.tutorialFile
 
             viewModel.loadPdf(uri+ tutorial.tutorialFile)
+
+            val setData = TutorialListModel(
+                tutorial.idGrade,
+                tutorial.idTutorial,
+                tutorial.tutorialImage,
+                tutorial.title)
+
+            setUpAction(setData)
         }
 
         viewModel.pdfStream.observe(this) { inputStream ->
@@ -79,17 +93,21 @@ class PdfViewerActivity : AppCompatActivity() {
         }
 
         setFavoritIcon()
-        setUpAction()
         setFavoritMateri()
         setAddHistoryMateri()
 
     }
 
-    private fun setUpAction(){
+    private fun setUpAction(setData: TutorialListModel){
         binding?.topAppBar?.setNavigationOnClickListener {
             @Suppress("DEPRECATION")
             onBackPressed()
+        }
 
+        binding?.btnToSoal?.setOnClickListener {
+            val intent = Intent(this, ListSoalActivity::class.java)
+            intent.putExtra(ListSoalActivity.ID_SOAL, setData)
+            startActivity(intent)
         }
     }
 

@@ -17,6 +17,9 @@ data class HistoriMateri(
     @ColumnInfo("idTutorial")
     var idTutorial: String? = null,
 
+    @ColumnInfo("idGrade")
+    var idGrade: String? = null,
+
     @ColumnInfo("grade")
     var grade: String? = null,
 

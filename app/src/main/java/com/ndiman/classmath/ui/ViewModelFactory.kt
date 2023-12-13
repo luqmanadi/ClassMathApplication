@@ -11,6 +11,7 @@ import com.ndiman.classmath.ui.history.HistoryViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.ListKelasViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.ListTutorialViewModel
 import com.ndiman.classmath.ui.home.materi.viewmodel.PdfViewerViewModel
+import com.ndiman.classmath.ui.home.search.viewmodel.SearchViewModel
 import com.ndiman.classmath.ui.home.soal.viewmodel.ListKelasSoalViewModel
 import com.ndiman.classmath.ui.home.soal.viewmodel.ListSoalTutorialViewModel
 import com.ndiman.classmath.ui.home.soal.viewmodel.ListSoalViewModel
@@ -77,6 +78,9 @@ class ViewModelFactory (private val repository: Repository): ViewModelProvider.N
             }
             modelClass.isAssignableFrom(PdfViewerViewModel::class.java) -> {
                 PdfViewerViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
+                SearchViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

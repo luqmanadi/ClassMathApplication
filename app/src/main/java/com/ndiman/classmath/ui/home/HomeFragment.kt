@@ -22,6 +22,7 @@ import com.ndiman.classmath.ui.ViewModelFactory
 import com.ndiman.classmath.ui.home.adapter.ImageSlideAdapter
 import com.ndiman.classmath.ui.home.adapter.LeaderboardAdapter
 import com.ndiman.classmath.ui.home.materi.ListKelasActivity
+import com.ndiman.classmath.ui.home.search.SearchActivity
 import com.ndiman.classmath.ui.home.soal.ListKelasSoalActivity
 import com.ndiman.classmath.ui.home.viewmodel.HomeViewModel
 import com.ndiman.classmath.ui.onboarding.OnBoardingActivity
@@ -77,6 +78,7 @@ class HomeFragment : Fragment() {
             }
         }
 
+
         setUpSliderImage()
         getDetailUser()
         getLeaderboard()
@@ -84,13 +86,29 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpActionMenu(){
-        binding.btnMateri.setOnClickListener {
-            startActivity(Intent(requireActivity(), ListKelasActivity::class.java))
+
+        binding.apply {
+            btnMateri.setOnClickListener {
+                startActivity(Intent(requireActivity(), ListKelasActivity::class.java))
+            }
+
+            btnSoal.setOnClickListener {
+                startActivity(Intent(requireActivity(), ListKelasSoalActivity::class.java))
+            }
+
+            searchView.setupWithSearchBar(this.searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, _, _ ->
+                    val query = textView.text.toString()
+                    val intent = Intent(requireContext(), SearchActivity::class.java)
+                    intent.putExtra(SearchActivity.EXTRA_QUERY, query)
+                    startActivity(intent)
+                    searchView.hide()
+                    false
+                }
         }
 
-        binding.btnSoal.setOnClickListener {
-            startActivity(Intent(requireActivity(), ListKelasSoalActivity::class.java))
-        }
     }
 
     private fun setUpSliderImage(){

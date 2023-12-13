@@ -100,4 +100,6 @@
     <string name="back">Kembali</string>
     <string name="finish">Akhiri Quiz</string>
     <string name="dialog_quiz">Apakah anda ingin mengakhiri latihan soal?</string>
+    <string name="search_title">Hasil Pencarian</string>
+    <string name="to_soal">Latihan Soal</string>
 </resources>
